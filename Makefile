@@ -10,14 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME 	= 	libftprintf.a
-CC 		= 	cc
-CFLAGS 	= 	-Wall -Wextra -Werror -c
-AR 		= 	ar
-ARFLAG 	= 	rcs
-RM 		= 	rm -rf
+NAME 	:=	libftprintf.a
+SRC_DIR	:=	src
+OBJ_DIR :=	obj
+INC_DIR	:=	inc
 
-SOURCES = 	ft_printf.c \
+SOURCES := 	ft_printf.c \
 		  	ft_putchar.c \
 		  	ft_putnbr.c \
 		  	ft_putstr.c \
@@ -25,19 +23,60 @@ SOURCES = 	ft_printf.c \
 		  	ft_puthex.c \
 		  	ft_putptr.c
 
-OBJECTS =	$(SOURCES:.c=.o)
+OBJECTS :=  $(SOURCES:%.c=$(OBJ_DIR)/%.o)
+
+CC 		:= 	cc
+CFLAGS 	:= 	-Wall -Wextra -Werror
+AR 		:= 	ar
+ARFLAG 	:= 	rcs
+RM 		:= 	rm -rf
+
 all: 		$(NAME)
-%.o: 		%.c
-			$(CC) $(CFLAGS) $< -o $@
 
+$(NAME):	$(OBJECTS)
+			$(AR) $(ARFLAGS) $(NAME) $(OBJECTS)
 
-main: $(NAME)
-make: $(NAME)
-make fclean: clean
-$(NAME): $(SOURCES)
-	$(CC) $(CFLAGS) $(SOURCES)
-	$(AR) $(ARFLAG) $(NAME) *.o
+$(OBJ_DIR):
+			@mkdir $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ:DIR)
+			$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	$(RM) *.o
-fclean: clean
-	$(RM) $(NAME)
+			$(RM) $(OBJ_DIR)
+
+fclean:		clean
+			$(RM) $(NAME)
+
+re:			fclean all
+
+.PHONY:		all clean fclean re
+
+# **************************************************************************** #
+# 1. PROJECT CONFIGURATION
+# NAME      Name of the target static library.
+# SRC_DIR   Directory containing source (.c) files.
+# OBJ_DIR   Directory for generated object (.o) files.
+# INC_DIR   Directory for header (.h) files.
+#
+# 2. FILE MANAGEMENT
+# SOURCES   List of all source files to be compiled.
+# OBJECTS   Dynamic mapping: converts .c source paths to .o objects in OBJ_DIR.
+#
+# 3. COMPILATION SETTINGS
+# CC        Compiler used (cc is the standard in 42).
+# CFLAGS    Flags for strict compilation.
+# AR        Archiver tool for creating static libraries.
+# ARFLAGS   Flags for r (insert/replace), c (create archive), s (create index).
+# RM        Command to remove files/directories recursively and forcefully.
+#
+# 4. DETAILED RULES EXPLANATION
+# 4.1. all:       	It triggers the creation of the library '$(NAME)'.
+# 4.2. $(NAME):   	This rule links all object files into the final archive.
+# 4.3. $(OBJ_DIR): 	This rule creates the object directory.
+# 4.4. %.o:       	Defines how to create any '.o' file from a '.c' file. 
+# 4.5. clean:     	Removes the entire object directory.
+# 4.6. fclean:    	Calls 'clean' first, then removes the final static library.
+# 4.7. re:        	Guarantees a clean recompilation from scratch.
+# 4.8. .PHONY:    	Declares rules as internal commands.
+# **************************************************************************** #

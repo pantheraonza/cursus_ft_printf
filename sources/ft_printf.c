@@ -29,7 +29,7 @@ int ft_printf(char const *format, ...)
     {
         if (format[i] == '%' && format[i + 1] != '\0')
         {
-            partial_bytes = ft_convert(format[i + 1], args);
+            partial_bytes = ft_dispatch(format[i + 1], args);
             i = i + 2;
         }
         else

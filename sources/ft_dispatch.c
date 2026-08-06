@@ -17,8 +17,9 @@ int	ft_dispatch(char conv_type, va_list args)
 	if (conv_type == 'c')
 		return (ft_print_char(va_arg(args, int)));
 	if (conv_type == 's')
-		return (ft_print_string(va_arg(args, char *)));
-    // if (conv_type == '%')
-    //     return (ft_print_char('%');
+		return (ft_print_str(va_arg(args, char *)));
 	return (ft_print_char('%'));
 }
+
+// if (conv_type == '%')
+//     return (ft_print_char('%'));

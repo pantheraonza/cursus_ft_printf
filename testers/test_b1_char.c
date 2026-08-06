@@ -21,9 +21,11 @@ int	main(void)
 	emulated = ft_printf("Hola %c y %%\n", 'A');
 	original = printf("Hola %c y %%\n", 'A');
 	printf("Test 0 -> original=%d emulated=%d\n", original, emulated);
+	ft_printf("Test 0 -> original=%d emulated=%d\n", original, emulated);
 	emulated = ft_printf("%c\n", 'Z');
 	original = printf("%c\n", 'Z');
 	printf("Test 1 -> original=%d emulated=%d\n", original, emulated);
+	ft_printf("Test 1 -> original=%d emulated=%d\n", original, emulated);
 	return (0);
 }
 

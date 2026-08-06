@@ -21,9 +21,11 @@ int	main(void)
 	emulated = ft_printf("Cadena: %s!\n", "42");
 	original = printf("Cadena: %s!\n", "42");
 	printf("Test 0 -> original=%d emulated=%d\n", original, emulated);
-	emulated = ft_printf("Nulo: %s\n", NULL);
-	original = printf("Nulo: %s\n", NULL);
+	ft_printf("Test 0 -> original=%d emulated=%d\n", original, emulated);
+	emulated = ft_printf("Nulo: %s\n", (char *)NULL);
+	original = printf("Nulo: %s\n", (char *)NULL);
 	printf("Test 1 -> original=%d emulated=%d\n", original, emulated);
+	ft_printf("Test 1 -> original=%d emulated=%d\n", original, emulated);
 	return (0);
 }
 

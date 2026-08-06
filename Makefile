@@ -30,8 +30,8 @@ SOURCES 	:= 	ft_printf.c \
 
 OBJECTS 	:=  $(SOURCES:%.c=$(OBJ_DIR)/%.o)
 
-TESTERS		:=	test_block1.c \
-				test_block2.c
+TESTERS		:=	test_b1_char.c \
+				test_b2_str.c
 
 TEST_EXECS	:=	$(TESTERS:%.c=%)
 

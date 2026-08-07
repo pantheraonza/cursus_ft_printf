@@ -20,6 +20,12 @@ int	ft_dispatch(char conv_type, va_list args)
 		return (ft_print_str(va_arg(args, char *)));
 	if (conv_type == 'd' || conv_type == 'i')
 		return (ft_print_int(va_arg(args, int)));
+	if (conv_type == 'u')
+		return (ft_print_unsigned(va_arg(args, unsigned int)));
+	if (conv_type == 'x')
+    	return (ft_print_hexa(va_arg(args, unsigned int), "0123456789abcdef"));
+	if (conv_type == 'X')
+    	return (ft_print_hexa(va_arg(args, unsigned int), "0123456789ABCDEF"));
 	return (ft_print_char('%'));
 }
 

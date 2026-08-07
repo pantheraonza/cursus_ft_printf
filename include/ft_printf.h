@@ -21,6 +21,9 @@ int	ft_dispatch(char conv_type, va_list args);
 int	ft_print_char(char c);
 int	ft_print_str(char *str);
 int ft_print_int(int n);
+int	ft_print_unsigned(unsigned int n);
+int	ft_print_hexa(unsigned int n, char *base);
 int	ft_print_nbr(unsigned long n, char *base);
 
 #endif
+

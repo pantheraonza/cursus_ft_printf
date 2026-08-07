@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hexa.c                                    :+:      :+:    :+:   */
+/*   test_b4_unsigned.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: criredon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/05 17:16:37 by criredon          #+#    #+#             */
-/*   Updated: 2026/08/05 17:16:39 by criredon         ###   ########.fr       */
+/*   Created: 2026/08/07 18:47:08 by criredon          #+#    #+#             */
+/*   Updated: 2026/08/07 18:47:10 by criredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+#include <stdio.h>
+#include <limits.h>
 
-int	ft_print_hexa(unsigned int n, char *base)
+int	main(void)
 {
-	return (ft_print_nbr((unsigned long)n, base));
+	int	emulated;
+	int	original;
+
+	emulated = ft_printf("Num: %u\n", 42);
+	original = printf("Num: %u\n", 42);
+	ft_printf("Test 0 -> original=%d emulated=%d\n", original, emulated);
+	emulated = ft_printf("Max: %u\n", UINT_MAX);
+	original = printf("Max: %u\n", UINT_MAX);
+	ft_printf("Test 1 -> original=%d emulated=%d\n", original, emulated);
+	return (0);
 }

@@ -1,5 +1,42 @@
 *Este proyecto ha sido creado como parte del currículo de 42 por criredon.*
 
+
+Bloque	Estado
+1 — %c, %%	✅
+2 — %s con NULL	✅
+3 — %d, %i	✅
+4 — %u	✅
+5 — %x, %X	⬜
+6 — %p	⬜
+7 — integración final	⬜
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ft_printf
 
 ---

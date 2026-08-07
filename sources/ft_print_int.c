@@ -12,35 +12,26 @@
 
 #include "../include/ft_printf.h"
 
-int	ft_print_nbr(long n)
+int	ft_print_int(int n)
 {
-	int		bytes;
-	long	number;
+	long			nbr_long;
+	unsigned long	nbr_unsigned;
+	int				bytes;
+	int				sign;
 
+	nbr_long = (long)n;
 	bytes = 0;
-	number = n;
-	if (number < 0)
+	sign = 0;
+	if (nbr_long < 0)
 	{
-		bytes = bytes + ft_print_char('-');
-		number = -number;
+		if (ft_print_char('-') < 0)
+			return (-1);
+		nbr_long = -nbr_long;
+		sign = 1;
 	}
-	if (number >= 10)
-		bytes += ft_print_nbr(number / 10);
-	bytes += ft_print_char((number % 10) + '0');
-	return (bytes);
-}
-{
-	long	number;
-
-	if (fd < 0)
-		return ;
-	number = n;
-	if (number < 0)
-	{
-		ft_putchar_fd('-', fd);
-		number = -number;
-	}
-	if (number >= 10)
-		ft_putnbr_fd(number / 10, fd);
-	ft_putchar_fd((number % 10) + '0', fd);
+	nbr_unsigned = (unsigned long)nbr_long;
+	bytes = ft_print_nbr(nbr_unsigned, "0123456789");
+	if (bytes < 0)
+		return (-1);
+	return (bytes + sign);
 }

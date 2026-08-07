@@ -26,7 +26,8 @@ SOURCES 	:= 	ft_printf.c \
 # 		  		ft_print_ptr.c \
 # 		  		ft_print_int.c \
 # 		  		ft_print_unsig.c \
-# 				ft_print_hexa.c
+# 				ft_print_hexa.c \
+				ft_utils_nbr.c
 
 OBJECTS 	:=  $(SOURCES:%.c=$(OBJ_DIR)/%.o)
 

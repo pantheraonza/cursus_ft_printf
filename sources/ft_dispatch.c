@@ -18,6 +18,8 @@ int	ft_dispatch(char conv_type, va_list args)
 		return (ft_print_char(va_arg(args, int)));
 	if (conv_type == 's')
 		return (ft_print_str(va_arg(args, char *)));
+	if (conv_type == 'd' || conv_type == 'i')
+		return (ft_print_int(va_arg(args, int)));
 	return (ft_print_char('%'));
 }
 

@@ -36,7 +36,8 @@ TESTERS		:=	test_b1_char.c \
 				test_b3_int.c \
 				test_b4_unsigned.c \
 				test_b5_hexa.c \
-				test_b6_ptr.c
+				test_b6_ptr.c \
+				test_b7_printf.c
 
 TEST_EXECS	:=	$(TESTERS:%.c=%)
 

@@ -14,5 +14,5 @@
 
 int	ft_print_unsigned(unsigned int n)
 {
-	return (ft_print_nbr((unsigned long)n, "0123456789"));
+	return (ft_utils_nbr((unsigned long)n, "0123456789"));
 }

@@ -28,5 +28,3 @@ int	main(void)
 	ft_printf("Test 1 -> original=%d emulated=%d\n", original, emulated);
 	return (0);
 }
-
-//Block 1: Test with %c and %% conversion specifiers.

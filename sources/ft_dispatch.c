@@ -23,11 +23,12 @@ int	ft_dispatch(char conv_type, va_list args)
 	if (conv_type == 'u')
 		return (ft_print_unsigned(va_arg(args, unsigned int)));
 	if (conv_type == 'x')
-    	return (ft_print_hexa(va_arg(args, unsigned int), "0123456789abcdef"));
+		return (ft_print_hexa(va_arg(args, unsigned int), "0123456789abcdef"));
 	if (conv_type == 'X')
-    	return (ft_print_hexa(va_arg(args, unsigned int), "0123456789ABCDEF"));
+		return (ft_print_hexa(va_arg(args, unsigned int), "0123456789ABCDEF"));
+	if (conv_type == 'p')
+		return (ft_print_ptr(va_arg(args, void *)));
+	if (conv_type == '%')
+		return (ft_print_char('%'));
 	return (ft_print_char('%'));
 }
-
-// if (conv_type == '%')
-//     return (ft_print_char('%'));

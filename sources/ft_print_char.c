@@ -12,12 +12,12 @@
 
 #include "../include/ft_printf.h"
 
-int ft_print_char(char c)
+int	ft_print_char(char c)
 {
-    int bytes;
+	int		bytes;
 
-    bytes = write(1, &c, 1);
-    return (bytes);
+	bytes = write(1, &c, 1);
+	return (bytes);
 }
 
 // int main(void)

@@ -14,5 +14,5 @@
 
 int	ft_print_hexa(unsigned int n, char *base)
 {
-	return (ft_print_nbr((unsigned long)n, base));
+	return (ft_utils_nbr((unsigned long)n, base));
 }

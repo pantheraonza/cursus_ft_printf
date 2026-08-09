@@ -30,7 +30,7 @@ int	ft_print_int(int n)
 		sign = 1;
 	}
 	nbr_unsigned = (unsigned long)nbr_long;
-	bytes = ft_print_nbr(nbr_unsigned, "0123456789");
+	bytes = ft_utils_nbr(nbr_unsigned, "0123456789");
 	if (bytes < 0)
 		return (-1);
 	return (bytes + sign);
@@ -65,7 +65,7 @@ int	ft_print_int(int n)
 ** nbr_unsigned = (unsigned long)nbr_long;
 **     Convert the now-positive value to unsigned long, the type the engine
 **     expects. Done on every path (negative already fixed, or positive).
-** bytes = ft_print_nbr(nbr_unsigned, "0123456789");
+** bytes = ft_utils_nbr(nbr_unsigned, "0123456789");
 **     Delegate the digits to the shared engine, in base 10.
 ** if (bytes < 0)
 **     return (-1);

@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                  :+:      :+:    :+:   */
+/*   test_b6_ptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: criredon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/05 17:17:27 by criredon          #+#    #+#             */
-/*   Updated: 2026/08/05 17:17:28 by criredon         ###   ########.fr       */
+/*   Created: 2026/08/09 15:29:33 by criredon          #+#    #+#             */
+/*   Updated: 2026/08/09 15:29:34 by criredon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-#include "../libft/libft.h"
+#include <stdio.h>
 
-int	ft_print_str(char *str)
+int	main(void)
 {
-	int		bytes;
+	int		emulated;
+	int		original;
+	int		x;
 
-	if (str == NULL)
-		return (write(1, "(null)", 6));
-	bytes = write(1, str, ft_strlen(str));
-	return (bytes);
+	x = 42;
+	emulated = ft_printf("ptr: %p\n", &x);
+	original = printf("ptr: %p\n", &x);
+	ft_printf("Test 0 -> original=%d emulated=%d\n", original, emulated);
+	emulated = ft_printf("nil: %p\n", (void *)0);
+	original = printf("nil: %p\n", (void *)0);
+	ft_printf("Test 1 -> original=%d emulated=%d\n", original, emulated);
+	return (0);
 }

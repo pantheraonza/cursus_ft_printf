@@ -12,34 +12,40 @@
 
 #include "../include/ft_printf.h"
 
-int ft_printf(char const *format, ...)
+static int	ft_scan(char const *format, va_list args)
 {
-    va_list     args;
-    size_t      i;
-    int         total_bytes;
-    int         partial_bytes;
+	size_t		i;
+	int			total_bytes;
+	int			partial_bytes;
 
-    if (format == NULL)
-        return (-1);
-    va_start(args, format);
-    i = 0;
-    total_bytes = 0;
-    partial_bytes = 0;
-    while (format[i] != '\0')
-    {
-        if (format[i] == '%' && format[i + 1] != '\0')
-        {
-            partial_bytes = ft_dispatch(format[i + 1], args);
-            i = i + 2;
-        }
-        else
-        {
-            partial_bytes = ft_print_char(format[i]);
-            i = i + 1;
-        }
-        total_bytes = total_bytes + partial_bytes;
-    }
-    va_end(args);
-    return (total_bytes);
+	i = 0;
+	total_bytes = 0;
+	while (format[i] != '\0')
+	{
+		if (format[i] == '%' && format[i + 1] != '\0')
+		{
+			partial_bytes = ft_dispatch(format[i + 1], args);
+			i = i + 2;
+		}
+		else
+		{
+			partial_bytes = ft_print_char(format[i]);
+			i = i + 1;
+		}
+		total_bytes = total_bytes + partial_bytes;
+	}
+	return (total_bytes);
 }
 
+int	ft_printf(char const *format, ...)
+{
+	va_list		args;
+	int			total_bytes;
+
+	if (format == NULL)
+		return (-1);
+	va_start(args, format);
+	total_bytes = ft_scan(format, args);
+	va_end(args);
+	return (total_bytes);
+}

@@ -24,10 +24,10 @@ SOURCES 	:= 	ft_printf.c \
 		 	 	ft_print_char.c \
 		  		ft_print_str.c \
 				ft_print_int.c \
-				ft_utils_nbr.c \
 				ft_print_unsigned.c \
 				ft_print_hexa.c \
-# 		  		ft_print_ptr.c
+		  		ft_print_ptr.c \
+				ft_utils_nbr.c
 
 OBJECTS 	:=  $(SOURCES:%.c=$(OBJ_DIR)/%.o)
 
@@ -35,7 +35,8 @@ TESTERS		:=	test_b1_char.c \
 				test_b2_str.c \
 				test_b3_int.c \
 				test_b4_unsigned.c \
-				test_b5_hexa.c
+				test_b5_hexa.c \
+				test_b6_ptr.c
 
 TEST_EXECS	:=	$(TESTERS:%.c=%)
 

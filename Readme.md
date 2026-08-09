@@ -1,57 +1,18 @@
 *Este proyecto ha sido creado como parte del currículo de 42 por criredon.*
 
-
-Bloque	Estado
-1 — %c, %%	✅
-2 — %s con NULL	✅
-3 — %d, %i	✅
-4 — %u	✅
-5 — %x, %X	⬜
-6 — %p	⬜
-7 — integración final	⬜
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # ft_printf
 
 ---
 
 ## 1. Descripción General - ¿Cuál es el objetivo del proyecto ft_printf?
 
-El proyecto `ft_printf` es la reimplementación desde cero de la función `printf()` de la librería estándar de C. El objetivo es entender cómo funciona y porqué se ejecuta sin conocer la cantidad de argumentos que va a recibir - entender las **funciones variádicas** (funciones que aceptan un número desconocido de argumentos en tiempo de compilación). 
+El proyecto `ft_printf` es la reimplementación desde cero de la función `printf()`. El objetivo es entender cómo funciona y porqué se ejecuta sin conocer la cantidad de argumentos que va a recibir - entender las **funciones variádicas** (funciones que aceptan un número desconocido de argumentos en tiempo de compilación). 
 
-El resultado final es una librería estática, `libftprintf.a`, que contiene una única función:
+En la función recreada se implementan de forma obligatoria las conversiones `c s p d i u x X %`. El resultado final es una librería estática, `libftprintf.a`, que contiene una única función:
 
 ```c
 int ft_printf(const char *, ...);
 ```
-
-En la función recreada se implementan de forma obligatoria las conversiones `c s p d i u x X %`, y de forma bonus, la gestión de cualquier combinación de flags (`-`, `0`, `#`, ` `, `+`), el ancho mínimo de campo y la precisión de las conversiones.
 
 ---
 
@@ -62,7 +23,6 @@ En la función recreada se implementan de forma obligatoria las conversiones `c 
 | Comando | Efecto |
 |---|---|
 | `make` | Compila `libft` (con su propio Makefile) y después `libftprintf.a`, dejándola en la raíz del repositorio |
-| `make bonus` | Añade a la librería las conversiones con flags y el ancho mínimo, compiladas desde archivos `_bonus.c` / `_bonus.h` independientes |
 | `make clean` | Elimina los archivos objeto (`.o`) | 
 | `make fclean` | Elimina objetos y la librería `.a` |
 | `make re` | Equivale a `fclean` + `all` |
@@ -88,12 +48,12 @@ ft_printf("[%5d][%-5d][%05d]\n", 42, 42, 42);
 ```
 
 ---
- 
+
 ## 3. Recursos
  
 ### 3.1 Referencias clásicas consultadas
 
-La implementación de este proyecto se basa en la especificación oficial del proyecto de 42 y cuenta con el respaldo de referencias confiables para el lenguaje C. 
+La implementación de este proyecto se basa en la especificación oficial del proyecto de 42 y cuenta con el respaldo de referencias confiables. 
 
 - Manuales de Programación de Linux: man 3 printf, man 3 stdarg.
 - Especificaciones POSIX-Open Group: printf, stdarg.h
@@ -103,26 +63,14 @@ La implementación de este proyecto se basa en la especificación oficial del pr
 
 Se revisaron tutoriales y repositorios de otros programadores con experiencia, para contrastar decisiones técnicas y recursos empleados, además de obtener testers que permitieran verificar la funcionalidad del programa.
 
-Tutoriales de programadores que considero referentes:
+Tutoriales y proyectos de programadores que considero referentes:
 - https://suspectedoceano.notion.site/
-- https://parzibyte.me/blog/2020/12/30/struct-c/
-
-Proyectos incluyendo el bonus:
-- https://github.com/42-alberto/printf (42Madrid)
-- https://github.com/dmsosa/42-printf (42Madrid)
 - https://github.com/VniiD/Printf (42SaoPaulo)
-- https://github.com/librity/ft_printf (42SaoPaulo)
-- https://github.com/mcombeau/ft_printf (42Paris)
-
-Proyectos sin bonus:
+- https://github.com/lrcouto/ft_printf (42SaoPaulo)
 - https://github.com/mapena-z/ft_printf (42Madrid)
 - https://github.com/vittoric/ft_printf (42Madrid)
-- https://github.com/lrcouto/ft_printf (42SaoPaulo)
+- https://github.com/mcombeau/ft_printf (42Paris)
 - https://github.com/Laendrun/42-ft_printf (42Switzerland)
-
-Testers:
-- https://github.com/cacharle/ft_printf_test
-- https://github.com/paulo-santana/ft_printf_tester
 
 ### 3.3 Uso de IA — declaración de transparencia
  
@@ -433,3 +381,39 @@ El proyecto de libftprintf
 
 ** Estrategia para solucionar el reto
 - Utilizar las opcion de struct y array de punteros es una solución más compleja que hacer recursiones sobre el string
+
+
+
+
+
+
+Bloque	Estado
+1 — %c, %%	✅
+2 — %s con NULL	✅
+3 — %d, %i	✅
+4 — %u	✅
+5 — %x, %X	⬜
+6 — %p	⬜
+7 — integración final	⬜
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

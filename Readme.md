@@ -147,8 +147,6 @@ El proyecto se levantó en bloques acumulativos, de manera que cada función pud
 | 6 | `%p` | `uintptr_t`, prefijo `0x`, caso nulo, motor en base 16 |
 | 7 | — | Integración, bordes, norminette, relink, valgrind, tester final |
 
-### 4.4 ¿Cuál la estructura de datos del proyecto?
-
 ### 4.4 ¿Cómo está estructurado el proyecto?
 
 El proyecto se organiza en dos archivos fuente, un header y el Makefile, más la `libft` como dependencia. Cada archivo agrupa funciones por afinidad: el recorrido y las conversiones simples en uno, y el motor numérico con sus derivadas en otro.

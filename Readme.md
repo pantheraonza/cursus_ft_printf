@@ -87,7 +87,7 @@ El código final, la lógica algorítmica, las decisiones de diseño y la implem
 
 ---
 
-## 4. Ejecución, estructura y decisiones técnicas
+## 4. Decisiones técnicas, ejecución y estructura de datos
 
 ### 4.1 ¿Qué arquitectura se eligió y por qué?
 

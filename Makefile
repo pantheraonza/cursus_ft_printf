@@ -10,36 +10,18 @@
 #                                                                              #
 # **************************************************************************** #
 
+#include "ft_printf.h"m
+
 NAME 		:=	libftprintf.a
-SRC_DIR		:=	sources
 OBJ_DIR		:=	objects
-INC_DIR		:=	include
-TST_DIR		:=	testers
-LIBFT_DIR	:=	libft
+LIBFT_DIR	:=	../libft
 LIBFT_NAME	:=	libft.a
 LIBFT		:=	$(LIBFT_DIR)/$(LIBFT_NAME)
 
 SOURCES 	:= 	ft_printf.c \
-		 	 	ft_dispatch.c \
-		 	 	ft_print_char.c \
-		  		ft_print_str.c \
-				ft_print_int.c \
-				ft_print_unsigned.c \
-				ft_print_hexa.c \
-		  		ft_print_ptr.c \
-				ft_utils_nbr.c
+				ft_printf_nbr.c
 
 OBJECTS 	:=  $(SOURCES:%.c=$(OBJ_DIR)/%.o)
-
-TESTERS		:=	test_b1_char.c \
-				test_b2_str.c \
-				test_b3_int.c \
-				test_b4_unsigned.c \
-				test_b5_hexa.c \
-				test_b6_ptr.c \
-				test_b7_printf.c
-
-TEST_EXECS	:=	$(TESTERS:%.c=%)
 
 CC 			:= 	cc
 CFLAGS 		:= 	-Wall -Wextra -Werror
@@ -59,25 +41,20 @@ $(NAME):	$(LIBFT) $(OBJECTS)
 $(OBJ_DIR):
 			@mkdir $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-			$(CC) $(CFLAGS) -c $< -o $@
-
-test:		$(NAME) $(TEST_EXECS)
-
-$(TEST_EXECS): %: $(TST_DIR)/%.c $(NAME)
-			$(CC) $(CFLAGS) -I $(INC_DIR) -I $(LIBFT_DIR) $< $(NAME) -o $@
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+			$(CC) $(CFLAGS) -I $(LIBFT_DIR) -c $< -o $@
 
 clean:
 			$(RM) $(OBJ_DIR)
 			@make -C $(LIBFT_DIR) clean
 
 fclean:		clean
-			$(RM) $(NAME) $(TEST_EXECS)
+			$(RM) $(NAME)
 			@make -C $(LIBFT_DIR) fclean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re test
+.PHONY:		all clean fclean re
 
 # **************************************************************************** #
 # 1. PROJECT CONFIGURATION

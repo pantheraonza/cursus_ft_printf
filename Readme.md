@@ -147,7 +147,41 @@ El proyecto se levantó en bloques acumulativos, de manera que cada función pud
 | 6 | `%p` | `uintptr_t`, prefijo `0x`, caso nulo, motor en base 16 |
 | 7 | — | Integración, bordes, norminette, relink, valgrind, tester final |
 
-### 4.4 ¿Qué fundamentos hicieron falta para comprender el proyecto?
+### 4.4 ¿Cuál la estructura de datos del proyecto?
+
+### 4.4 ¿Cómo está estructurado el proyecto?
+
+El proyecto se organiza en dos archivos fuente, un header y el Makefile, más la `libft` como dependencia. Cada archivo agrupa funciones por afinidad: el recorrido y las conversiones simples en uno, y el motor numérico con sus derivadas en otro.
+
+**`ft_printf.h`** — Cabecera pública. Protege contra doble inclusión, incluye lo
+estrictamente necesario (`../libft/libft.h`, `<stdarg.h>`, `<unistd.h>`) y declara
+todos los prototipos.
+
+**`ft_printf.c`** — Recorrido del formato y conversiones no numéricas.
+
+| Función | Para qué sirve |
+|---|---|
+| `ft_printf` | Punto de entrada público. Valida el formato, abre la `va_list`, delega el recorrido y devuelve el total de bytes |
+| `ft_scan` | Recorre el formato carácter a carácter; distingue texto literal de conversión y va sumando los bytes escritos |
+| `ft_dispatch` | Según el especificador tras `%`, decide qué función de impresión llamar y consume el argumento del tipo correcto |
+| `ft_print_char` | Escribe un carácter con `write` y devuelve el conteo |
+| `ft_print_str` | Escribe una cadena; resuelve el caso `NULL` imprimiendo `(null)` |
+
+**`ft_printf_nbr.c`** — Motor numérico y todas las conversiones que se apoyan en él.
+
+| Función | Para qué sirve |
+|---|---|
+| `ft_utils_nbr` | Motor recursivo único: convierte un `unsigned long` a cualquier base según el alfabeto recibido, y cuenta los bytes |
+| `ft_print_int` | `%d` / `%i`: gestiona el signo, resuelve `INT_MIN` ensanchando a `long`, y delega las cifras en el motor |
+| `ft_print_unsigned` | `%u`: adapta el `unsigned int` y llama al motor en base 10, sin signo |
+| `ft_print_hexa` | `%x` / `%X`: llama al motor en base 16 con el alfabeto (minúsculas o mayúsculas) que le pasa el dispatcher |
+| `ft_print_ptr` | `%p`: gestiona el puntero nulo, escribe el prefijo `0x` y convierte la dirección con el motor en base 16 |
+
+**`Makefile`** — Compila la `libft`, fusiona `libft.a` dentro de `libftprintf.a` y añade encima los objetos propios. Incluye las reglas `all`, `clean`, `fclean` y `re`.
+
+**`libft/`** — Biblioteca propia reutilizada; de ella se emplea `ft_strlen` para medir cadenas y el alfabeto de las bases.
+
+### 4.5 ¿Qué fundamentos hicieron falta para comprender el proyecto?
 
 Antes de escribir la primera línea, cuatro conceptos del lenguaje C tuvieron que quedar claros: sin ellos, ni el mecanismo variádico ni la conversión numérica se sostienen.
 

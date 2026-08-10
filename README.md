@@ -2,8 +2,6 @@
 
 # ft_printf
 
----
-
 ## 1. Descripción general — ¿Cuál es el objetivo del proyecto ft_printf?
 
 El proyecto `ft_printf` es la reimplementación desde cero de la función `printf()`. El objetivo es entender cómo funciona y por qué puede ejecutarse sin conocer de antemano la cantidad de argumentos que va a recibir; es decir, comprender las **funciones variádicas** (funciones que aceptan un número de argumentos no determinado en tiempo de compilación).
